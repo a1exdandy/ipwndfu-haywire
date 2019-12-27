@@ -79,6 +79,8 @@ class PwnedUSBDevice():
 
   def aes(self, data, action, key):
     assert len(data) % AES_BLOCK_SIZE == 0
+    if 'CPID:8747' in self.serial_number:
+        key &= 0xffffffffdfffffff
     (retval, received) = self.execute(len(data), self.config.aes_crypto_cmd, action, self.cmd_data_address(7), self.cmd_data_address(0), len(data), key, 0, 0, data)
     assert retval & 0xFFFFFFFF == 0
     return received[:len(data)]      
