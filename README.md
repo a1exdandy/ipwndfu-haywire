@@ -6,8 +6,8 @@
 
 ## About this fork
 
-* Supports s5l8747x (Heywire)
-* Contains [dump of SecureROM](SecureROM-s5l8747xsi-1413.8-RELEASE.dump) for s5l8747x
+* Supports s5l8747x (Haywire)
+* Contains [dump of SecureROM](SecureROM-s5l8747xsi-1413.8-RELEASE.dump) for **s5l8747x**
 
 ## checkm8
 
