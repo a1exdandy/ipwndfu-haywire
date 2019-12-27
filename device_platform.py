@@ -44,6 +44,11 @@ class DevicePlatform:
       self.dfu_load_base       = 0x800000000
       self.recovery_image_base = 0x18001C000
       self.recovery_load_base  = 0x800000000
+    if self.cpid in [0x8747]:
+      self.dfu_image_base      = 0x22000000
+      self.dfu_load_base       = 0x08000000
+      self.recovery_image_base = 0xdeadbeef  # TODO: it is not necessary, right?
+      self.recovery_load_base  = 0xdeadbeef
 
   def name(self):
     if 0x8720 <= self.cpid <= 0x8960:
@@ -54,6 +59,13 @@ class DevicePlatform:
       return 't%xsi' % self.cpid
 
 all_platforms = [
+  DevicePlatform(cpid=0x8747, cprv=0x10, scep=0x10, arch='armv7', srtg='iBoot-1413.8',
+    rom_base=0x20000000, rom_size=0x20000, rom_sha1='7e502652144aab586ab8ee2427518a459359aca1',
+    sram_base=0x22000000, sram_size=0x20000,
+    dram_base=0x8000000,
+    nonce_length=20, sep_nonce_length=None,  # TODO: reverse and check it
+    demotion_reg=0x3d100008,  # TODO: check it
+  ),
   DevicePlatform(cpid=0x8947, cprv=0x00, scep=0x10, arch='armv7', srtg='iBoot-1458.2',
     rom_base=0x3F000000, rom_size=0x10000, rom_sha1='d9320ddd4bdb1de79ae0601f20e7db23441ab1a7',
     sram_base=0x34000000, sram_size=0x40000,

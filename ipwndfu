@@ -51,6 +51,8 @@ if __name__ == '__main__':
 
             if 'CPID:8720' in serial_number:
                 steaks4uce.exploit()
+            elif 'CPID:8747' in serial_number:
+                checkm8.exploit()
             elif 'CPID:8920' in serial_number:
                 limera1n.exploit()
             elif 'CPID:8922' in serial_number:
